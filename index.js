@@ -172,11 +172,13 @@ class SinglyLinkedList {
     return this;
   }
 
-
-
-  // Reverse
-  // Print: prints the full content of the list
-
+  // Print: prints all the nodes of the linked list
+  printNodes() {
+    console.log("All nodes:")
+    for (let i=0; i< this.size; i++){
+      console.log("  Node " + (i+1) + ": " + this.get(i).head);
+    }
+  }
 
   // Clear: removes all nodes from the linked list
   clear() {
@@ -184,6 +186,8 @@ class SinglyLinkedList {
     this.tail = null;
     this.size = 0;
   }
+
+    // Reverse
 
 }
 
@@ -196,7 +200,7 @@ exampleList.push("node3");
 console.log("Original list: ");
 console.log(exampleList);
 console.log();
-console.log("New output: ");
+console.log("New output: \n");
 
 // Testing push:
 // console.log(exampleList.push("node4"));
@@ -255,13 +259,9 @@ console.log("New output: ");
 // console.log(exampleList.remove(-1));
 // console.log(exampleList.remove("not an int"));
 
-// Testing the full content of the list
-console.log();
-console.log("Index 0: ", exampleList.get(0));
-console.log("Index 1: ", exampleList.get(1));
-console.log("Index 2: ", exampleList.get(2));
-console.log("Index 3: ", exampleList.get(3));
-console.log("Index 4: ", exampleList.get(4));
+// Testing printNodes:
+// exampleList.printNodes();
+
 
 
 
