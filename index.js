@@ -149,7 +149,7 @@ class SinglyLinkedList {
       // Find node to adapt
       let nodeToAdapt = this.get(index-1);
       // Store the rest of the list
-      let restOfList = this.get(index);
+      const restOfList = this.get(index);
       // Give the new node's next the rest of the list
       nodeToInsert.next = restOfList;
       // Give the node before the node to insert the new node as next
@@ -157,14 +157,37 @@ class SinglyLinkedList {
       // Update the size of the list
       this.size++;
     }
-
-    
-
     // Return the entire list
     return this;
   }
 
   // Remove: accepts an index removes the node at that index
+  remove(index) {
+    // Make sure the input is valid
+    if (index <0 || index >= this.size || typeof index != "number") {
+      return undefined;
+    }
+    // Check length of list
+    if (index == 0) {
+      this.shift();
+    } else if (index == this.size - 1) {
+      this.pop();
+    } else {
+      // Find node to adapt
+      let nodeToAdapt = this.get(index-1);
+      // Find the rest of the list
+      const restOfList = this.get(index+1);
+      // Replace the to adapt node with the new rest of list
+      nodeToAdapt.next = restOfList;
+      // Decrease the size of the list
+      this.size--;
+    }
+    // Return the entire list
+    return this;
+  }
+
+
+
   // Reverse
   // Print: prints the full content of the list
 
@@ -215,6 +238,7 @@ console.log("New output: ");
 // console.log(exampleList.get(1));
 // console.log(exampleList.get(2));
 // console.log(exampleList.get(3));
+// console.log(exampleList.get(4));
 // console.log(exampleList.get(-1));
 // console.log(exampleList.get("not an int"));
 
@@ -223,6 +247,7 @@ console.log("New output: ");
 // console.log(exampleList.set(1, "new data"));
 // console.log(exampleList.set(2, "new data"));
 // console.log(exampleList.set(3, "new data"));
+// console.log(exampleList.set(4, "new data"));
 // console.log(exampleList.set(-1, "new data"));
 // console.log(exampleList.set("not an int", "new data"));
 
@@ -231,8 +256,18 @@ console.log("New output: ");
 // console.log(exampleList.insert(1, "new node"));
 // console.log(exampleList.insert(2, "new node"));
 // console.log(exampleList.insert(3, "new node"));
+// console.log(exampleList.insert(4, "new node"));
 // console.log(exampleList.insert(-1, "new node"));
 // console.log(exampleList.insert("not an int", "new node"));
+
+// Testing remove:
+// console.log(exampleList.remove(0));
+// console.log(exampleList.remove(1));
+// console.log(exampleList.remove(2));
+// console.log(exampleList.remove(3));
+// console.log(exampleList.remove(4));
+// console.log(exampleList.remove(-1));
+// console.log(exampleList.remove("not an int"));
 
 // Testing the full content of the list
 // console.log();
