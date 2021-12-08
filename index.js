@@ -182,12 +182,15 @@ class SinglyLinkedList {
 
   // Clear: removes all nodes from the linked list
   clear() {
+    // reset everything to null/zero
     this.head = null;
     this.tail = null;
     this.size = 0;
+    // Return the entire list
+    return this;
   }
 
-    // Reverse
+  // Reverse: reverses all the nodes' order
 
 }
 
@@ -261,6 +264,9 @@ console.log("New output: \n");
 
 // Testing printNodes:
 // exampleList.printNodes();
+
+// Testing clear:
+// console.log(exampleList.clear());
 
 
 
