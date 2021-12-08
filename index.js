@@ -55,7 +55,7 @@ class SinglyLinkedList {
         this.tail.next = null;
         this.size--;
 
-        if (this.length === 0 ) {
+        if (this.size === 0 ) {
           this.head = null;
           this.tail = null;
         }
@@ -98,12 +98,32 @@ class SinglyLinkedList {
   }
 
   // Get: retrieves a value at a given index
+  get(index) {
+    // Make sure the input is valid
+    if (index <0 || typeof index != "number") {
+      return undefined;
+    }
+    // Declare variable to keep track of the node to return
+    let currentNode = this.head;
+    // Move down the list index times and update the node to return
+    for (let i=0; i < index; i++) {
+      if (currentNode.next) {
+        currentNode = currentNode.next;   
+        // If index is out of bounds, return undefined
+      } else {
+        return undefined;
+      }
+    }
+    // Return the node at the last position of the loop
+    return currentNode;
+  }
+
   // Set: given an index and value, will update the value of that node
   // Insert: accepts an index and value and inserts a new node
   // Remove: accepts an index removes the node at that index
   // Reverse
 
-  // Clear: removes all nodes fromt eh linked list
+  // Clear: removes all nodes from the linked list
   clear() {
     this.head = null;
     this.tail = null;
@@ -112,15 +132,41 @@ class SinglyLinkedList {
 
 }
 
+
+// Setting up the linked list:
 let exampleList = new SinglyLinkedList();
-//console.log(exampleList.push("node1"));
-console.log(exampleList.unshift("node4"));
-// console.log(exampleList.push("node2"));
-// console.log(exampleList.push("node3"));
-// console.log(exampleList.pop());
+
+// Testing push:
+console.log(exampleList.push("node1"));
+console.log(exampleList.push("node2"));
+console.log(exampleList.push("node3"));
+console.log();
+
+// Testing pop:
+//console.log(exampleList.pop());
+//console.log(exampleList.pop());
+//console.log(exampleList.pop());
+//console.log(exampleList.pop());
+
+// Testing shift:
 // console.log(exampleList.shift());
 // console.log(exampleList.shift());
 // console.log(exampleList.shift());
+// console.log(exampleList.shift());
+
+// Testing unshift:
 // console.log(exampleList.unshift("node4"));
 // console.log(exampleList.unshift("node5"));
+
+// Testing get:
+// console.log(exampleList.get(0));
+// console.log(exampleList.get(1));
+// console.log(exampleList.get(2));
+// console.log(exampleList.get(3));
+// console.log(exampleList.get(-1));
+// console.log(exampleList.get("a"));
+
+
+
+
 
