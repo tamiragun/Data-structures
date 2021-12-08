@@ -111,12 +111,8 @@ class SinglyLinkedList {
     if (index <0 || index >= this.size || typeof index != "number") {
       return undefined;
     }
-    // Declare variable to keep track of the node to update
-    let currentNode = this.head;
-    // Move down the list index times and update the node to update
-    for (let i=0; i < index; i++) {
-      currentNode = currentNode.next;   
-    }
+    // Find variable to keep to update
+    let currentNode = this.get(index);
     // Update the node at the last position of the loop
     currentNode.head = data;
     // Return the entire list
