@@ -27,14 +27,6 @@ class SinglyLinkedList {
     } else {
       this.tail.next = newNode;
       this.tail = newNode;
-      // while (true) {
-      //   let tempNode = this.head.next;
-      //   if (!tempNode) {
-      //     tempNode = new Node(data);
-      //     break;
-      //   }
-      //   tempNode= tempNode.next;
-      // }
     }
     this.size++;
     return this;
@@ -119,6 +111,29 @@ class SinglyLinkedList {
   }
 
   // Set: given an index and value, will update the value of that node
+  set(index, data) {
+    // Make sure the input is valid
+    if (index <0 || typeof index != "number") {
+      return undefined;
+    }
+    // Declare variable to keep track of the node to update
+    let currentNode = this.head;
+    // Move down the list index times and update the node to update
+    for (let i=0; i < index; i++) {
+      if (currentNode.next) {
+        currentNode = currentNode.next;   
+        // If index is out of bounds, return undefined
+      } else {
+        return undefined;
+      }
+    }
+    // Update the node at the last position of the loop
+    currentNode.head = data;
+    // Return the entire list
+    return this;
+  }
+
+
   // Insert: accepts an index and value and inserts a new node
   // Remove: accepts an index removes the node at that index
   // Reverse
@@ -164,7 +179,15 @@ console.log();
 // console.log(exampleList.get(2));
 // console.log(exampleList.get(3));
 // console.log(exampleList.get(-1));
-// console.log(exampleList.get("a"));
+// console.log(exampleList.get("not an int"));
+
+// Testing set:
+// console.log(exampleList.set(0, "new data"));
+// console.log(exampleList.set(1, "new data"));
+// console.log(exampleList.set(2, "new data"));
+// console.log(exampleList.set(3, "new data"));
+// console.log(exampleList.set(-1, "new data"));
+// console.log(exampleList.set("not an int", "new data"));
 
 
 
