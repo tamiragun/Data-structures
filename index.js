@@ -92,19 +92,14 @@ class SinglyLinkedList {
   // Get: retrieves a value at a given index
   get(index) {
     // Make sure the input is valid
-    if (index <0 || typeof index != "number") {
+    if (index <0 || index >= this.size || typeof index != "number") {
       return undefined;
     }
     // Declare variable to keep track of the node to return
     let currentNode = this.head;
     // Move down the list index times and update the node to return
     for (let i=0; i < index; i++) {
-      if (currentNode.next) {
-        currentNode = currentNode.next;   
-        // If index is out of bounds, return undefined
-      } else {
-        return undefined;
-      }
+      currentNode = currentNode.next;   
     }
     // Return the node at the last position of the loop
     return currentNode;
@@ -113,19 +108,14 @@ class SinglyLinkedList {
   // Set: given an index and value, will update the value of that node
   set(index, data) {
     // Make sure the input is valid
-    if (index <0 || typeof index != "number") {
+    if (index <0 || index >= this.size || typeof index != "number") {
       return undefined;
     }
     // Declare variable to keep track of the node to update
     let currentNode = this.head;
     // Move down the list index times and update the node to update
     for (let i=0; i < index; i++) {
-      if (currentNode.next) {
-        currentNode = currentNode.next;   
-        // If index is out of bounds, return undefined
-      } else {
-        return undefined;
-      }
+      currentNode = currentNode.next;   
     }
     // Update the node at the last position of the loop
     currentNode.head = data;
@@ -136,7 +126,7 @@ class SinglyLinkedList {
   // Insert: accepts an index and value and inserts a new node
   insert(index, data) {
     // Make sure the input is valid
-    if (index <0 || typeof index != "number") {
+    if (index <0 || index > this.size || typeof index != "number") {
       return undefined;
     }
     if (index == 0) {
@@ -270,12 +260,12 @@ console.log("New output: ");
 // console.log(exampleList.remove("not an int"));
 
 // Testing the full content of the list
-// console.log();
-// console.log("Index 0: ", exampleList.get(0));
-// console.log("Index 1: ", exampleList.get(1));
-// console.log("Index 2: ", exampleList.get(2));
-// console.log("Index 3: ", exampleList.get(3));
-// console.log("Index 4: ", exampleList.get(4));
+console.log();
+console.log("Index 0: ", exampleList.get(0));
+console.log("Index 1: ", exampleList.get(1));
+console.log("Index 2: ", exampleList.get(2));
+console.log("Index 3: ", exampleList.get(3));
+console.log("Index 4: ", exampleList.get(4));
 
 
 
