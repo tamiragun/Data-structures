@@ -133,10 +133,41 @@ class SinglyLinkedList {
     return this;
   }
 
-
   // Insert: accepts an index and value and inserts a new node
+  insert(index, data) {
+    // Make sure the input is valid
+    if (index <0 || typeof index != "number") {
+      return undefined;
+    }
+    if (index == 0) {
+      this.unshift(data);
+    } else if (index == this.size) {
+      this.push(data);
+    } else {
+      // Create a new node
+      const nodeToInsert = new Node(data);
+      // Find node to adapt
+      let nodeToAdapt = this.get(index-1);
+      // Store the rest of the list
+      let restOfList = this.get(index);
+      // Give the new node's next the rest of the list
+      nodeToInsert.next = restOfList;
+      // Give the node before the node to insert the new node as next
+      nodeToAdapt.next = nodeToInsert;
+      // Update the size of the list
+      this.size++;
+    }
+
+    
+
+    // Return the entire list
+    return this;
+  }
+
   // Remove: accepts an index removes the node at that index
   // Reverse
+  // Print: prints the full content of the list
+
 
   // Clear: removes all nodes from the linked list
   clear() {
@@ -150,12 +181,18 @@ class SinglyLinkedList {
 
 // Setting up the linked list:
 let exampleList = new SinglyLinkedList();
+exampleList.push("node1");
+exampleList.push("node2");
+exampleList.push("node3");
+console.log("Original list: ");
+console.log(exampleList);
+console.log();
+console.log("New output: ");
 
 // Testing push:
-console.log(exampleList.push("node1"));
-console.log(exampleList.push("node2"));
-console.log(exampleList.push("node3"));
-console.log();
+// console.log(exampleList.push("node4"));
+// console.log(exampleList.push("node5"));
+// console.log(exampleList.push("node6"));
 
 // Testing pop:
 //console.log(exampleList.pop());
@@ -188,6 +225,23 @@ console.log();
 // console.log(exampleList.set(3, "new data"));
 // console.log(exampleList.set(-1, "new data"));
 // console.log(exampleList.set("not an int", "new data"));
+
+// Testing insert:
+// console.log(exampleList.insert(0, "new node"));
+// console.log(exampleList.insert(1, "new node"));
+// console.log(exampleList.insert(2, "new node"));
+// console.log(exampleList.insert(3, "new node"));
+// console.log(exampleList.insert(-1, "new node"));
+// console.log(exampleList.insert("not an int", "new node"));
+
+// Testing the full content of the list
+// console.log();
+// console.log("Index 0: ", exampleList.get(0));
+// console.log("Index 1: ", exampleList.get(1));
+// console.log("Index 2: ", exampleList.get(2));
+// console.log("Index 3: ", exampleList.get(3));
+// console.log("Index 4: ", exampleList.get(4));
+
 
 
 
